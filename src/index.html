@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+
+  <title>BlockChainDM</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="css/app.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>BlockChain Data Management</h1>
+    </div>
+
+    <div class="col-md-12" id="data-list">
+      <div class="row">
+        <div class="col-lg-12">
+          <p id="account" class="welcome pull-right"></p>
+          <p class="welcome pull-right">ID: </p>
+          <p class="welcome pull-left">Balance: </p>
+          <p id="accountBalance" class="welcome pull-left"></p>
+        </div>
+      </div>
+
+      <div class="row panel panel-default">
+        <div class="panel-heading clearfix">
+          <div class="panel-title">
+            <button class="btn btn-success btn-lg pull-left" style="margin:5px;" data-toggle="modal" data-target="#sellData">Upload data</button>
+            <button class="btn btn-info btn-lg pull-left" style="margin:5px;" onclick="App.reloadData(); return false;">Show all data</button>
+            <button class="btn btn-info btn-lg pull-left" style="margin:5px;" onclick="App.searchData('yourData'); return false;">Show only data you sell</button>
+            <button class="btn btn-info btn-lg pull-left" style="margin:5px;" onclick="App.searchData('othersData'); return false;">Show only data you can buy</button>
+            <button class="btn btn-info btn-lg pull-right" style="margin:2px;" onclick="App.searchData('search'); return false;">Submit</button>
+            <div class="form-inline">
+              <input class="form-control form-control-sm ml-3 w-75 pull-right" style="margin-top:10px;" type="text" placeholder="Search" aria-label="Search" id="enteredValue">
+            </div>
+          </div>
+        </div>
+        <ul id="events" class="collapse list-group"></ul>
+      </div>
+
+      <div id="dataRow" class="row">
+        <!-- DATA LOAD HERE -->
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div id="dataTemplate" style="display: none;">
+    <div class="row-lg-12">
+      <div class="panel panel-default panel-data">
+        <div class="panel-heading">
+          <h3 class="panel-title"></h3>
+        </div>
+        <div class="panel-body">
+          <strong>Content: </strong><span class="data-content"></span><br />
+          <strong>Price (ETH)</strong>: <span class="data-price"></span><br />
+          <strong>Sold by</strong>: <span class="data-seller"></span><br />
+        </div>
+        <div class="panel-footer">
+          <button type="button" class="btn btn-primary btn-success btn-buy" onclick="App.buyData(event); return false;">Buy</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="sellData" role="dialog">
+    <div class="modal-dialog">
+
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Data creation modal</h4>
+        </div>
+
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <form>
+                <div class="form-group">
+                  <label for="data_name">Name</label>
+                  <input type="text" class="form-control" id="data_name" placeholder="Enter the name" required>
+                </div>
+                <div class="form-group">
+                  <label for="price">Price in ETH</label>
+                  <input type="number" class="form-control" id="data_price" placeholder="0" pattern="[0-9]+([\.,][0-9]+)?"
+                    step="0.01" required>
+                </div>
+                <div class="form-group">
+                  <label for="content">Content</label>
+                  <textarea type="text" class="form-control vresize" id="data_content" placeholder="Enter your data" required></textarea>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-success" data-dismiss="modal" onclick="App.sellData(); return false;">Submit</button>
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="footer" class="container">
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+      <div class="navbar-inner navbar-content-center text-center">
+        <p class="text-muted">Senior Project by Klint Sulstarova</p>
+      </div>
+    </nav>
+  </div>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/web3.min.js"></script>
+  <script src="js/truffle-contract.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "BlockChainDM",
+  "version": "1.0.0",
+  "description": "",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ChainSkills",
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "jspdf": "^2.1.1",
+    "scrypt": "github:barrysteyn/node-scrypt#fb60a8d3c158fe115a624b5ffa7480f3a24b03fb",
+    "truffle-hdwallet-provider": "0.0.6"
+  }
+}

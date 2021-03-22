@@ -1,0 +1,29 @@
+body {
+    padding-top: 40px;
+    padding-bottom: 120px;
+}
+
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 114px;
+}
+
+.welcome {
+    font-size: 18px;
+    display: inline;
+    padding: 5px;
+}
+
+.divider{
+    padding-top: 10px;
+    padding-right: 15px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+
+span {
+    white-space: pre-wrap;
+}
